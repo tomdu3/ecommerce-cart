@@ -17,8 +17,18 @@ const Navbar = () => {
       }
     };
 
+    const handleEscapeKey = (event) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false);
+      }
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
   }, []);
 
   useEffect(() => {
@@ -29,10 +39,12 @@ const Navbar = () => {
     }
   }, [mobileMenuOpen]);
 
+  const toggleMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <div ref={bodyRef}>
-      {" "}
-      {/* Added ref to body */}
       <nav className="px-5 py-2 flex justify-between items-center shadow-md text-base md:text-2xl relative">
         {/* Logo */}
         <img
@@ -74,14 +86,14 @@ const Navbar = () => {
           </div>
           {/* Total Price */}
           <span className="text-gray-700 font-medium">$0.00</span>
-          {/* Hamburger Menu Button (Mobile) */}
+          {/* Hamburger/X Menu Button (Mobile) */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={toggleMenu}
             className="md:hidden p-2 rounded-md hover:bg-gray-200 focus:outline-none"
           >
             <FontAwesomeIcon
-              icon={mobileMenuOpen ? faXmark : faBars}
-              className="text-gray-700 text-xl"
+              icon={faBars}
+              className={`${mobileMenuOpen ? "text-white" : "text-gray-700"} text-xl transition-all duration-300`}
             />
           </button>
         </div>
@@ -89,7 +101,7 @@ const Navbar = () => {
         {/* Mobile Menu - Slides in from Right */}
         <div
           ref={mobileMenuRef}
-          className={`fixed top-10 right-0 h-auto w-64 bg-white/75 backdrop-blur-xl shadow-lg border-2 border-gray-200 transform transition-transform duration-300 ease-in-out ${
+          className={`fixed top-15 right-0 h-auto w-auto bg-white/30 backdrop-blur-2xl shadow-lg transform transition-transform duration-300 ease-in-out ${
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           } md:hidden`}
           style={{ zIndex: 1000 }}
