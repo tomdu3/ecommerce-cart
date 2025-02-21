@@ -1,8 +1,14 @@
 import { useState } from "react";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function App() {
-  return <h1 className="bg-blue-500 text-white">Hello world</h1>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
 export default App;
