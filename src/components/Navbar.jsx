@@ -45,12 +45,12 @@ const Navbar = () => {
 
   return (
     <div ref={bodyRef}>
-      <nav className="px-5 py-2 flex justify-between items-center shadow-md text-base md:text-2xl relative">
+      <nav className="px-5 md:px-[10%] lg:px-[5%] py-2 flex justify-between lg:justify-around items-center shadow-md text-base md:text-2xl relative">
         {/* Logo */}
         <img
           src="/images/logo.png"
           alt="logo"
-          className="w-20 h-10 md:w-40 md:h-12 object-cover lg:object-contain"
+          className="w-20 h-10 md:w-40 md:h-12 object-cover lg:w-45 lg:h-15 lg:object-cover"
         />
 
         {/* Navigation Links (Desktop) */}
