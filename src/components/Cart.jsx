@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CartItem from './CartItem';
+import { useCart } from '../context/CartContext';
 
 const Cart = () => {
-  // Dummy cart data for now
-  const cartItems = [
-    { id: 1, title: 'Product 1', price: 20, quantity: 2, image: 'https://img.freepik.com/free-photo/close-up-view-online-shopping-concept_23-2148625696.jpg' },
-    { id: 2, title: 'Product 2', price: 30, quantity: 1, image: 'https://img.freepik.com/free-photo/front-view-online-shopping-concept_23-2148625666.jpg' },
-  ];
+  const { cartItems, removeFromCart, clearCart, updateQuantity } = useCart();
 
   const calculateSubtotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -22,16 +19,17 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div>
+        <>
+          <button onClick={clearCart} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">Clear Cart</button>
           {cartItems.map((item) => (
-            <CartItem key={item.id} item={item} />
+            <CartItem key={item.id} item={item} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />
           ))}
           <div className="mt-4">
             <p className="font-bold">Subtotal: ${subtotal.toFixed(2)}</p>
             <p className="font-bold">Discount (10%): ${discount.toFixed(2)}</p>
             <p className="text-xl font-bold">Total: ${total.toFixed(2)}</p>
           </div>
-        </div>
+        </>
       )}
     </div>
   );

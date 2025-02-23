@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, removeFromCart, updateQuantity }) => {
+  const [quantity, setQuantity] = useState(item.quantity);
+
+  const handleQuantityChange = (newQuantity) => {
+    setQuantity(newQuantity);
+    updateQuantity(item.id, newQuantity);
+  };
+
   return (
     <div className="flex items-center justify-between border-b py-4">
       <div className="flex items-center">
@@ -11,12 +18,29 @@ const CartItem = ({ item }) => {
         </div>
       </div>
       <div className="flex items-center">
-        <button className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded">-</button>
-        <span className="mx-2">{item.quantity}</span>
-        <button className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded">+</button>
+        <button
+          onClick={() => handleQuantityChange(Math.max(1, quantity - 1))}
+          className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded"
+          disabled={quantity === 1}
+        >
+          -
+        </button>
+        <input
+          type="number"
+          value={quantity}
+          onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10))}
+          className="mx-2 w-12 text-center"
+          min="1"
+        />
+        <button
+          onClick={() => handleQuantityChange(quantity + 1)}
+          className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded"
+        >
+          +
+        </button>
       </div>
       <div>
-        <button className="text-red-500 hover:text-red-700">Remove</button>
+        <button onClick={() => removeFromCart(item.id)} className="text-red-500 hover:text-red-700">Remove</button>
       </div>
     </div>
   );
