@@ -12,7 +12,16 @@ const Cart = () => {
 
   const handleRemoveFromCart = (itemId) => {
     removeFromCart(itemId);
-    toast.success('Item removed from cart');
+    if (cartItems.length === 1) {
+      toast.info('Last item removed. Your cart is now empty');
+    } else {
+      toast.success('Item removed from cart');
+    }
+  };
+
+  const handleClearCart = () => {
+    clearCart();
+    toast.info('Your cart has been cleared');
   };
 
   const subtotal = calculateSubtotal();
@@ -26,7 +35,9 @@ const Cart = () => {
         <p>Your cart is empty.</p>
       ) : (
         <>
-          <button onClick={clearCart} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">Clear Cart</button>
+          <button onClick={handleClearCart} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">
+            Clear Cart
+          </button>
           {cartItems.map((item) => (
             <CartItem key={item.id} item={item} removeFromCart={handleRemoveFromCart} updateQuantity={updateQuantity} />
           ))}
