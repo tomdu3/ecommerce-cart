@@ -1,3 +1,4 @@
+import { useCart } from '../context/CartContext';
 import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +7,12 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
   const bodyRef = useRef(null);
+
+  const { cartItems } = useCart();
+  const calculateTotalPrice = () => {
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+  };
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -80,12 +87,14 @@ const Navbar = () => {
               icon={faCartPlus}
               className="text-gray-700 text-xl md:text-2xl"
             />
-            <span className="absolute -top-3 -right-3 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-              2
-            </span>
+            {cartItems.length > 0 && (
+              <span className="absolute -top-3 -right-3 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {cartItems.reduce((total, item) => total + item.quantity, 0)}
+              </span>
+            )}
           </div>
           {/* Total Price */}
-          <span className="text-gray-700 font-medium">$0.00</span>
+          <span className="text-gray-700 font-medium">${calculateTotalPrice()}</span>
           {/* Hamburger/X Menu Button (Mobile) */}
           <button
             onClick={toggleMenu}
