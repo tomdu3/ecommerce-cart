@@ -1,12 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import CartItem from './CartItem';
 import { useCart } from '../context/CartContext';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
   const { cartItems, removeFromCart, clearCart, updateQuantity } = useCart();
 
   const calculateSubtotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  const handleRemoveFromCart = (itemId) => {
+    removeFromCart(itemId);
+    toast.success('Item removed from cart');
   };
 
   const subtotal = calculateSubtotal();
@@ -22,7 +28,7 @@ const Cart = () => {
         <>
           <button onClick={clearCart} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">Clear Cart</button>
           {cartItems.map((item) => (
-            <CartItem key={item.id} item={item} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />
+            <CartItem key={item.id} item={item} removeFromCart={handleRemoveFromCart} updateQuantity={updateQuantity} />
           ))}
           <div className="mt-4">
             <p className="font-bold">Subtotal: ${subtotal.toFixed(2)}</p>
