@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useCart } from '../context/CartContext';
 import ProductCard from './ProductCard';
 
 const ProductList = () => {
+  const { cartItems } = useCart();
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -22,6 +24,7 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
+
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-2xl font-bold mb-4">Products</h1>
@@ -35,4 +38,3 @@ const ProductList = () => {
 };
 
 export default ProductList;
-
