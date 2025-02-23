@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList";
@@ -11,6 +13,7 @@ function App() {
     <CartProvider>
       <Router>
       <Navbar />
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<ProductList />} />
         <Route path="/cart" element={<Cart />} />
