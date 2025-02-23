@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.toast {
+    margin-top: 50px;
+}
