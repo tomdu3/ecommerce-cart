@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { toast } from 'react-toastify';
 
 const ProductCard = ({ product }) => {
   const { cartItems, addToCart, removeFromCart } = useCart();
+  const [showFullDescription, setShowFullDescription] = useState(false);
   const isProductInCart = cartItems.some(item => item.id === product.id);
 
   const handleAddToCart = () => {
@@ -20,6 +21,8 @@ const ProductCard = ({ product }) => {
     }
   };
 
+  const titleClass = showFullDescription ? 'text-lg font-semibold mb-2' : 'text-lg font-semibold mb-2 truncate';
+
   return (
     <div className="group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
       <div className="relative h-64 overflow-hidden">
@@ -33,10 +36,19 @@ const ProductCard = ({ product }) => {
           20% OFF
         </div>
       </div>
-      
+
       <div className="p-4">
-        <h2 className="text-lg font-semibold mb-2 truncate">{product.title}</h2>
-        <div className="flex justify-between items-center">
+        <h2 className={titleClass}>{product.title}</h2>
+        <p className="text-gray-700 text-sm mb-2 line-clamp-3">
+          {showFullDescription ? product.description : product.shortDescription}
+        </p>
+        <button
+          onClick={() => setShowFullDescription(!showFullDescription)}
+          className="text-blue-500 text-sm hover:underline"
+        >
+          {showFullDescription ? 'Show Less' : 'Read More'}
+        </button>
+        <div className="flex justify-between items-center mt-2">
           <div>
             <span className="text-gray-400 line-through mr-2">${(product.price * 1.2).toFixed(2)}</span>
             <span className="text-xl font-bold text-black">${(product.price).toFixed(2)}</span>
@@ -44,8 +56,8 @@ const ProductCard = ({ product }) => {
           <button
             onClick={handleAddToCart}
             className={`rounded-full p-2 ${
-              isProductInCart 
-                ? 'bg-red-500 hover:bg-red-600' 
+              isProductInCart
+                ? 'bg-red-500 hover:bg-red-600'
                 : 'bg-black hover:bg-gray-800'
             } text-white transition-colors`}
           >
