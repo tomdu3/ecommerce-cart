@@ -68,7 +68,7 @@ const ProductList = () => {
       <div className="mt-16 bg-gray-100 p-8 rounded-lg text-center">
         <h2 className="text-2xl font-bold mb-4">Subscribe & Get 20% Discount code</h2>
         <p className="mb-4">Sign up for our newsletter below to receive the latest discount codes</p>
-        <div className="flex max-w-md mx-auto gap-2">
+        <div className="flex flex-col md:flex-row max-w-md mx-auto gap-2">
           <input
             type="email"
             placeholder="Email Address"
