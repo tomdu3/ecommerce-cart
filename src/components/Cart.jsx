@@ -30,7 +30,7 @@ const Cart = () => {
 
   return (
     <div className="flex justify-center py-8">
-      <div className="max-w-lg w-full px-4">
+      <div className="max-w-lg md:max-w-4xl w-full px-4">
         <h1 className="text-2xl font-bold mb-4 text-left">Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <p className="text-red-500 text-center md:text-xl">Your cart is empty.</p>
