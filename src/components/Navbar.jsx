@@ -53,10 +53,10 @@ const Navbar = () => {
 
   return (
     <div ref={bodyRef}>
-      <nav className="px-5 md:px-[10%] lg:px-[5%] py-2 flex justify-between lg:justify-around items-center shadow-md text-base md:text-2xl relative">
+      <nav className="bg-black text-white px-5 md:px-[10%] lg:px-[5%] py-4 flex justify-between lg:justify-around items-center shadow-md text-base md:text-2xl relative">
         {/* Logo */}
         <img
-          src="/images/logo.png"
+          src="/images/logo2.png"
           alt="logo"
           className="w-20 h-10 md:w-40 md:h-12 object-cover lg:w-45 lg:h-15 lg:object-cover"
         />
@@ -64,17 +64,17 @@ const Navbar = () => {
         {/* Navigation Links (Desktop) */}
         <ul className="hidden md:flex gap-1 md:gap-5 items-center">
           <li>
-            <Link to="/" className="text-gray-700 hover:text-black transition">
+            <Link to="/" className="text-white hover:text-gray-300 transition">
               Home
             </Link>
           </li>
           <li>
-            <a href="#" className="text-gray-700 hover:text-black transition">
+            <a href="#" className="text-white hover:text-gray-300 transition">
               About
             </a>
           </li>
           <li>
-            <a href="#" className="text-gray-700 hover:text-black transition">
+            <a href="#" className="text-white hover:text-gray-300 transition">
               Contact
             </a>
           </li>
@@ -86,7 +86,7 @@ const Navbar = () => {
           <Link to="/cart" className="relative flex items-center">
             <FontAwesomeIcon
               icon={faCartPlus}
-              className="text-gray-700 text-xl md:text-2xl"
+              className="text-white text-xl md:text-2xl hover:text-gray-300 transition"
             />
             {cartItems.length > 0 && (
               <span className="absolute -top-3 -right-3 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
@@ -95,23 +95,23 @@ const Navbar = () => {
             )}
           </Link>
           {/* Total Price */}
-          <span className="text-gray-700 font-medium">${calculateTotalPrice()}</span>
-          {/* Hamburger/X Menu Button (Mobile) */}
+          <span className="text-white font-medium">${calculateTotalPrice()}</span>
+          {/* Hamburger Menu Button (Mobile) */}
           <button
             onClick={toggleMenu}
-            className="md:hidden p-2 rounded-md hover:bg-gray-200 focus:outline-none"
+            className="md:hidden p-2 rounded-md hover:bg-gray-800 focus:outline-none"
           >
             <FontAwesomeIcon
               icon={faBars}
-              className={`${mobileMenuOpen ? "text-white" : "text-gray-700"} text-xl transition-all duration-300`}
+              className="text-white text-xl transition-all duration-300"
             />
           </button>
         </div>
 
-        {/* Mobile Menu - Slides in from Right */}
+        {/* Mobile Menu */}
         <div
           ref={mobileMenuRef}
-          className={`fixed top-15 right-0 h-auto w-auto bg-white/30 backdrop-blur-2xl shadow-lg transform transition-transform duration-300 ease-in-out ${
+          className={`fixed top-15 right-0 h-auto w-auto bg-black/90 backdrop-blur-2xl shadow-lg transform transition-transform duration-300 ease-in-out ${
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           } md:hidden`}
           style={{ zIndex: 1000 }}
@@ -121,7 +121,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-700 hover:text-black block py-2"
+                  className="text-white hover:text-gray-300 block py-2"
                 >
                   Home
                 </Link>
@@ -129,7 +129,7 @@ const Navbar = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-black block py-2"
+                  className="text-white hover:text-gray-300 block py-2"
                 >
                   About
                 </a>
@@ -137,15 +137,15 @@ const Navbar = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-black block py-2"
+                  className="text-white hover:text-gray-300 block py-2"
                 >
                   Contact
                 </a>
               </li>
-              <li> {/* Add this cart link for mobile menu */}
+              <li>
                 <Link
                   to="/cart"
-                  className="text-gray-700 hover:text-black block py-2"
+                  className="text-white hover:text-gray-300 block py-2"
                 >
                   Cart
                 </Link>
