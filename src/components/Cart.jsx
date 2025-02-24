@@ -29,25 +29,27 @@ const Cart = () => {
   const total = subtotal - discount;
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-bold mb-4">Shopping Cart</h1>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <>
-          <button onClick={handleClearCart} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">
-            Clear Cart
-          </button>
-          {cartItems.map((item) => (
-            <CartItem key={item.id} item={item} removeFromCart={handleRemoveFromCart} updateQuantity={updateQuantity} />
-          ))}
-          <div className="mt-4">
-            <p className="font-bold">Subtotal: ${subtotal.toFixed(2)}</p>
-            <p className="font-bold">Discount (10%): ${discount.toFixed(2)}</p>
-            <p className="text-xl font-bold">Total: ${total.toFixed(2)}</p>
-          </div>
-        </>
-      )}
+    <div className="flex justify-center py-8">
+      <div className="max-w-lg w-full px-4">
+        <h1 className="text-2xl font-bold mb-4 text-left">Shopping Cart</h1>
+        {cartItems.length === 0 ? (
+          <p className="text-red-500 text-center md:text-xl">Your cart is empty.</p>
+        ) : (
+          <>
+            <button onClick={handleClearCart} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4 block mx-auto">
+              Clear Cart
+            </button>
+            {cartItems.map((item) => (
+              <CartItem key={item.id} item={item} removeFromCart={handleRemoveFromCart} updateQuantity={updateQuantity} />
+            ))}
+            <div className="mt-4">
+              <p className="font-bold md:text-xl">Subtotal: ${subtotal.toFixed(2)}</p>
+              <p className=" text-red-400">Final Discount if Checkout Now (-10%): -${discount.toFixed(2)}</p>
+              <p className="text-xl md:text-2xl font-bold">Total: ${total.toFixed(2)}</p>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };
