@@ -62,7 +62,17 @@ https://tomi-store.netlify.app/
     ```
 
 ## Directory Structure
-
+```
+.
+├── docs
+├── public
+│   └── images
+│       └── favicon_io
+└── src
+    ├── assets
+    ├── components
+    └── context
+```
 *   `./src/components`: Contains reusable React components (Navbar, ProductCard, Cart, etc.).
 *   `./src/context`: Contains the context provider for managing cart state.
 *   `./public/images`: Contains images used in the application.
