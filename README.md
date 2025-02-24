@@ -2,12 +2,18 @@
 
 This document details the TomiStore e-commerce application, a React-based project utilizing Tailwind CSS for styling and the Fake Store API for product data.
 
-![TomiStore Screenshot]()
-
+![TomiStore Screenshot](./docs/amiresponsive.png)
+[Link to the deployed site](https://tomi-store.netlify.app/)
 
 ## Overview
 
 TomiStore is a responsive e-commerce application providing a streamlined shopping experience.  Users can browse products, add items to a cart, view cart contents, adjust quantities, and remove items.  The application is built with a focus on clean code, maintainability, and a user-friendly interface.
+
+## Deployment
+
+The TomiStore application is deployed on Netlify and can be accessed at:
+https://tomi-store.netlify.app/
+
 
 ## Features
 
@@ -20,14 +26,14 @@ TomiStore is a responsive e-commerce application providing a streamlined shoppin
 
 ## Technology Stack
 
-*   **Frontend Framework:** React.js
-*   **Styling:** Tailwind CSS
+
+*   **Frontend Framework:** [React.js](https://reactjs.org/)
+*   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 *   **API:** Fake Store API ([https://fakestoreapi.com/](https://fakestoreapi.com/))
 *   **State Management:** Context API (Simple state management)
 *   **Routing:** React Router
-*   **Toastify:** For displaying notifications to the user
-*   **Font Awesome:** For using icons in the application
-
+*   [Toastify](https://fkhadra.github.io/react-toastify/introduction): For displaying notifications to the user
+*   [Netlify](https://www.netlify.com/): A cloud platform for automated deployment and hosting of web applications
 
 ## Installation and Setup
 
