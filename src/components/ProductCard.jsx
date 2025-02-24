@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 
 const ProductCard = ({ product }) => {
   const { cartItems, addToCart, removeFromCart } = useCart();
-
   const isProductInCart = cartItems.some(item => item.id === product.id);
 
   const handleAddToCart = () => {
@@ -21,24 +20,39 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  const buttonText = isProductInCart ? 'Remove from Cart' : 'Add to Cart';
-
   return (
-    <div className="border rounded-md p-4 shadow-md">
-      <img
-        src={product.image}
-        alt={product.title}
-        className="h-48 w-full object-contain mb-4"
-      />
-      <h2 className="text-lg font-semibold">{product.title}</h2>
-      <p className="text-gray-600">${product.price}</p>
-      <p className="text-sm mt-2">{product.description}</p>
-      <button
-        onClick={handleAddToCart}
-        className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        {buttonText}
-      </button>
+    <div className="group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div className="relative h-64 overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+        />
+        {/* Sale Badge */}
+        <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm">
+          20% OFF
+        </div>
+      </div>
+      
+      <div className="p-4">
+        <h2 className="text-lg font-semibold mb-2 truncate">{product.title}</h2>
+        <div className="flex justify-between items-center">
+          <div>
+            <span className="text-gray-400 line-through mr-2">${(product.price * 1.2).toFixed(2)}</span>
+            <span className="text-xl font-bold text-black">${(product.price).toFixed(2)}</span>
+          </div>
+          <button
+            onClick={handleAddToCart}
+            className={`rounded-full p-2 ${
+              isProductInCart 
+                ? 'bg-red-500 hover:bg-red-600' 
+                : 'bg-black hover:bg-gray-800'
+            } text-white transition-colors`}
+          >
+            {isProductInCart ? 'Remove' : 'Add'}
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
