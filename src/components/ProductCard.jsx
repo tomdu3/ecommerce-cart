@@ -39,12 +39,12 @@ const ProductCard = ({ product }) => {
 
       <div className="p-4">
         <h2 className={titleClass}>{product.title}</h2>
-        <p className="text-gray-700 text-sm mb-2 line-clamp-3">
+        <p className="text-gray-700 text-base mb-2">
           {showFullDescription ? product.description : product.shortDescription}
         </p>
         <button
           onClick={() => setShowFullDescription(!showFullDescription)}
-          className="text-blue-500 text-sm hover:underline"
+          className="text-blue-500 text-base hover:underline"
         >
           {showFullDescription ? 'Show Less' : 'Read More'}
         </button>
