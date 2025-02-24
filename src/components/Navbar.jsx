@@ -69,12 +69,12 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-gray-300 transition">
+            <a href="#" className="text-gray-500 cursor-not-allowed pointer-events-none">
               About
             </a>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-gray-300 transition">
+            <a href="#" className="text-gray-500 cursor-not-allowed pointer-events-none">
               Contact
             </a>
           </li>
@@ -129,7 +129,7 @@ const Navbar = () => {
               <li>
                 <a
                   href="#"
-                  className="text-white hover:text-gray-300 block py-2"
+                  className="text-gray-500 cursor-not-allowed pointer-events-none block py-2"
                 >
                   About
                 </a>
@@ -137,7 +137,7 @@ const Navbar = () => {
               <li>
                 <a
                   href="#"
-                  className="text-white hover:text-gray-300 block py-2"
+                  className="text-gray-500 cursor-not-allowed pointer-events-none block py-2"
                 >
                   Contact
                 </a>
