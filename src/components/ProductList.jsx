@@ -30,22 +30,22 @@ const ProductList = () => {
     <div className="container mx-auto py-8">
       {/* Hero Section */}
       <div className="bg-gray-100 p-8 mb-12 rounded-lg text-center">
-        <h1 className="text-4xl font-bold mb-4">Summer Special Collection</h1>
-        <p className="text-xl mb-6">Brand day flat 20% off and free shipping</p>
-        <button className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800">
+        <h1 className="text-xl md:text-4xl font-bold mb-4">Summer Special Collection</h1>
+        <p className="text-base md:text-xl mb-6">Brand day flat 20% off and free shipping</p>
+        <button className="bg-black text-white text-sm md:text-base px-4 py-2 md:px-8 md:py-3 rounded-full hover:bg-gray-800">
           Shop Now
         </button>
       </div>
 
       {/* Category Navigation */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Trendy Products Just For You</h2>
+        <h2 className="md:text-2xl font-bold mb-4">Trendy Products Just For You</h2>
         <div className="flex gap-4 overflow-x-auto pb-2">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full whitespace-nowrap ${
+              className={`px-2 py-1 md:px-4 md:py-2 rounded-full whitespace-nowrap ${
                 selectedCategory === category
                   ? 'bg-black text-white'
                   : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
@@ -58,7 +58,7 @@ const ProductList = () => {
       </div>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
