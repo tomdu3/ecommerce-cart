@@ -2,6 +2,7 @@ import { useCart } from '../context/CartContext';
 import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom'; // Import the Link component
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -63,9 +64,9 @@ const Navbar = () => {
         {/* Navigation Links (Desktop) */}
         <ul className="hidden md:flex gap-1 md:gap-5 items-center">
           <li>
-            <a href="#" className="text-gray-700 hover:text-black transition">
+            <Link to="/" className="text-gray-700 hover:text-black transition">
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#" className="text-gray-700 hover:text-black transition">
@@ -82,7 +83,7 @@ const Navbar = () => {
         {/* Cart and Hamburger Section */}
         <div className="flex items-center gap-5">
           {/* Cart Icon with Badge */}
-          <div className="relative flex items-center">
+          <Link to="/cart" className="relative flex items-center">
             <FontAwesomeIcon
               icon={faCartPlus}
               className="text-gray-700 text-xl md:text-2xl"
@@ -92,7 +93,7 @@ const Navbar = () => {
                 {cartItems.reduce((total, item) => total + item.quantity, 0)}
               </span>
             )}
-          </div>
+          </Link>
           {/* Total Price */}
           <span className="text-gray-700 font-medium">${calculateTotalPrice()}</span>
           {/* Hamburger/X Menu Button (Mobile) */}
@@ -118,12 +119,12 @@ const Navbar = () => {
           <div className="p-5 space-y-4">
             <ul className="space-y-4">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="text-gray-700 hover:text-black block py-2"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -140,6 +141,14 @@ const Navbar = () => {
                 >
                   Contact
                 </a>
+              </li>
+              <li> {/* Add this cart link for mobile menu */}
+                <Link
+                  to="/cart"
+                  className="text-gray-700 hover:text-black block py-2"
+                >
+                  Cart
+                </Link>
               </li>
             </ul>
           </div>
