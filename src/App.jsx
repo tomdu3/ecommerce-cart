@@ -12,15 +12,19 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <CartProvider>
-      <Router>
-      <Navbar />
-      <ToastContainer className="toast" />
-      <Routes>
-        <Route path="/" element={<ProductList />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
-    </Router>
-    <Footer />
+      <div className="min-h-screen flex flex-col">
+        <Router>
+          <Navbar />
+          <ToastContainer className="toast" />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<ProductList />} />
+              <Route path="/cart" element={<Cart />} />
+            </Routes>
+          </main>
+        </Router>
+        <Footer />
+      </div>
     </CartProvider>
   );
 }
