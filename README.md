@@ -99,6 +99,6 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Copyright
 
-Copyright © 2025 [TomDcoding]. All rights reserved.
+Copyright © 2025 TomDcoding. All rights reserved.
 
  
